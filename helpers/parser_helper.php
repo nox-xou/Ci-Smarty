@@ -136,3 +136,55 @@ if ( ! function_exists('flashdata') )
         return $CI->session->flashdata($name);
     }
 }
+
+/**
+ * Mark
+ *
+ * Set a benchmark marker
+ *
+ * @param $name
+ */
+if ( ! function_exists('mark') )
+{
+    function mark($name)
+    {
+        $CI =& get_instance();
+
+        return $CI->benchmark->mark($name);
+    }
+}
+
+/**
+ * Elapsed time
+ *
+ * A helper function for getting a elapsed time
+ *
+ * @param $point1
+ * @param $point2
+ * @param $decimals
+ */
+if ( ! function_exists('elapsed_time') )
+{
+    function elapsed_time($point1 = '', $point2 = '', $decimals = 4)
+    {
+        $CI =& get_instance();
+
+        return $CI->benchmark->elapsed_time($point1, $point2, $decimals);
+    }
+}
+
+/**
+ * Memory Usage
+ *
+ * A helper function for getting a elapsed time
+ *
+ */
+if ( ! function_exists('memory_usage') )
+{
+    function memory_usage()
+    {
+        $CI =& get_instance();
+
+        return $CI->benchmark->memory_usage();
+    }
+}
