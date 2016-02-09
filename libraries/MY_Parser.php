@@ -30,8 +30,15 @@ class MY_Parser extends CI_Parser {
     {
         // Codeigniter instance and other required libraries/files
         $this->CI = get_instance();
-        $this->CI->load->library('CI_Smarty', NULL, 'smarty');
+        $this->CI->load->library('smarty');
+
+	    // Load the URL module
+        $this->CI->load->helper('url');
+
         $this->CI->load->helper('parser');
+        
+        $this->CI->smarty = new CI_Smarty();
+        $this->CI->load->helper('url');
 
         // Detect if we have a current module
         $this->_module = $this->current_module();
@@ -260,7 +267,7 @@ class MY_Parser extends CI_Parser {
 
         $attributes = array_merge($defaults, $attributes);
 
-        $return = '<img src ="'.base_url($this->CI->config->item('smarty.theme_path').$this->get_theme()."/img/".$file).'" alt="'.$attributes['alt'].'" title="'.$attributes['title'].'" />';
+        $return = '<img src ="'.base_url($this->CI->config->item('smarty.theme_path').$this->get_theme()."/img/".$file).'" alt="'.$attributes['alt'].'" title="'.$attributes['title'].'" class="'.$attributes['class'].'" style="'.$attributes['style'].'"/>';
 
         return $return;
     }
