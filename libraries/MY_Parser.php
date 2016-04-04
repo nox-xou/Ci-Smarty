@@ -32,9 +32,6 @@ class MY_Parser extends CI_Parser {
         $this->CI = get_instance();
         $this->CI->load->library('smarty');
 
-	    // Load the URL module
-        $this->CI->load->helper('url');
-
         $this->CI->load->helper('parser');
         
         $this->CI->smarty = new CI_Smarty();
